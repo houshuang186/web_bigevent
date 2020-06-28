@@ -43,10 +43,11 @@ $(function () {
         }
         $.post('/api/reguser', data, function (res) {
             if (res.status !== 0) {
-                //re
+                //return console.log(res.message)
                 //layer.msg - 提示框（弹出层）内置方法
                 return layer.msg(res.message)
             }
+            //console.log('注册成功')
             layer.msg('注册成功，请登录！')
             //模拟人的点击行为 直接跳到登录页面（用程序模拟）
             $('#link_login').click()
