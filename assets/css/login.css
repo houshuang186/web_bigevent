@@ -1,9 +1,10 @@
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
-    background: url('/assets/images/login_bg.jpg') no-repeat center;
+    background: url('../images/login_bg.jpg') no-repeat center;
     background-size: cover;
 }
 
@@ -14,12 +15,12 @@ html, body {
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 }
 
 .title-box {
     height: 60px;
-    background: url('/assets/images/login_title.png') no-repeat center;
+    background: url('../images/login_title.png') no-repeat center;
 }
 
 .reg-box {
@@ -42,6 +43,7 @@ html, body {
 .layui-form-item {
     position: relative;
 }
+
 .layui-icon {
     position: absolute;
     left: 10px;

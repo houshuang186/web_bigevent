@@ -39,17 +39,21 @@ $('.layui-form').on('submit', function (e) {
     //发起ajax请求时提交表单时剔除某个不需要提交的属性 法3 进行字符串的拼接
     // // $(this).serialize()得到的格式都是key=value&key=value的形式，需要对字符串进行拼接操作将rePwd剪掉，而delete方法操作的是对象格式的数据
 
-    const inputbody = $(this).serialize()
-    const inputbody1 = inputbody.split('&')
-    const index = inputbody1.findIndex(item => item.includes('rePwd'))
-    const inputbody2 = inputbody1.splice(index, 1)
-    const inputbody3 = inputbody1.join('&')
-    //console.log(inputbody3)
+    // const inputparams = $(this).serialize()
+    // const inputparams1 = inputparams.split('&')
+// ----------------------
+    //params.length = 2 //取数组的前两项
+    //params = 0和params = []为清空数组
+// ---------------------
+    // const index = inputparams1.findIndex(item => item.includes('rePwd'))
+    // const inputparams2 = inputparams1.splice(index, 1)
+    // const inputparams3 = inputparams1.join('&')
+    //console.log(inputparams3)
 
-    // //console.log('删之前' + inputbody)
+    // //console.log('删之前' + inputparams)
     // //字符串不能用delete方法，对象可用
-    // //delete inputbody.rePwd
-    // //console.log(inputbody)
+    // //delete inputparams.rePwd
+    // //console.log(inputparams)
     //-----------------------------------------
 
     //发起ajax请求时提交表单时剔除某个不需要提交的属性 法1
@@ -59,7 +63,8 @@ $('.layui-form').on('submit', function (e) {
     $.ajax({
         method: 'POST',
         url: '/my/updatepwd',
-        data: inputbody3,
+        //data: inputparams3,
+        data: $(this).serialize(),
         success: function (res) {
             //console.log(res)//status和message
             // form.val('formUserInfo', res.data)//拿不到提交的数据
@@ -68,7 +73,7 @@ $('.layui-form').on('submit', function (e) {
                 return layer.msg('更新密码失败!')
             }
             layer.msg('更新密码成功!')
-            //重置表单
+            //重置表单  $('.layui-form')[0]把jQuery对象转换成dom对象，才能用原生的reset方法
             $('.layui-form')[0].reset()
         }
     })

@@ -6,12 +6,15 @@ const app = express()
 const joi = require('@hapi/joi')
 //1.2 1.3
 const cors = require('cors')
+const path = require('path')
 app.use(cors())
 
 app.use(express.urlencoded({ extended: false }))  //注意位置，要在所有路由之前
 
 //托管静态资源文件
-app.use('/uploads', express.static('./uploads'))
+app.use("path.join(__dirname, '/uploads')", express.static("path.join(__dirname, './uploads')"))
+//console.log(path.join(__dirname, '/uploads'))
+//console.log(path.join(__dirname, './uploads'))
 
 //响应数据的中间件
 app.use((req, res, next) => {

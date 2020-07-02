@@ -51,6 +51,7 @@ exports.update_password_schema = {
         oldPwd: password,
         //ref一般表示引用
         newPwd: joi.not(joi.ref('oldPwd')).concat(password),
+        rePwd: joi.ref('newPwd')
     }
 }
 
